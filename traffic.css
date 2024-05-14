@@ -31,25 +31,46 @@ a:hover {
 div#content {
   position: relative;
   margin: auto;
-  width: 640px;
+  max-width: 1000px;
 }
 
 /* Visualization */
 
 #the-viz {
+  /* Adjust the padding-top value according to your SVG's aspect ratio */
+  padding-top: 62.5%;
+  /* This is for an aspect ratio of 16:10 (640x400) */
   position: relative;
-  width: 640px;
-  height: 400px;
 }
 
+#the-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 /* Controls layout */
 #the-controls {
   display: flex;
-  justify-content: space-around;
-  height: 160px;
-  margin-top: 7px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
   background-color: #F4F5F3;
+  padding: 1em 2em;
+}
+
+#the-controls .buttons,
+#the-controls .sub-controls {
+  flex: 1;
+}
+
+button,
+.slider {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
 }
 
 .buttons {
@@ -165,11 +186,7 @@ button {
   width: 150px;
 }
 
-#mode-menu-div {
-  display: block;
-  width: 160px;
-
-}
+#mode-menu-div {}
 
 #speed-menu-div {
   width: 160px;
@@ -185,7 +202,7 @@ button {
 
 select {
   display: block;
-  width: 150px;
+  width: 160px;
 }
 
 
@@ -263,4 +280,35 @@ path#barricade.hidden {
 text {
   font-family: sans-serif;
   fill: #575757;
+}
+
+@media (max-width: 768px) {
+  #the-controls {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .buttons {
+    flex-direction: row;
+  }
+
+  #the-controls>* {
+    margin: auto;
+    text-align: center;
+  }
+
+  #the-controls .buttons,
+  #the-controls .sub-controls {
+    width: 100%;
+    margin-block: auto;
+  }
+
+  #mode-menu-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
 }
